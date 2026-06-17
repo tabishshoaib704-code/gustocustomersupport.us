@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gustocustomersupport.us — Payroll & HR for Modern Teams</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2D6A4F;
+    --green-mid: #40916C;
+    --green-light: #74C69D;
+    --green-pale: #D8F3DC;
+    --cream: #FAFAF5;
+    --warm: #F5F0E8;
+    --dark: #1A2E22;
+    --text: #2C3E35;
+    --muted: #6B8070;
+    --accent: #F4A261;
+    --accent2: #E76F51;
+    --white: #FFFFFF;
+    --radius: 16px;
+    --shadow: 0 4px 32px rgba(45,106,79,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(250,250,245,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(45,106,79,0.08);
+    transition: box-shadow 0.3s;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.92rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--green); }
+
+  .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+  .btn-ghost {
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: var(--green-pale); }
+
+  .btn-primary {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(116,198,157,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(244,162,97,0.12) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  /* Floating blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .blob-1 { width: 420px; height: 420px; background: var(--green-light); top: 5%; right: 5%; animation-delay: 0s; }
+  .blob-2 { width: 260px; height: 260px; background: var(--accent); bottom: 15%; right: 20%; animation-delay: -3s; }
+  .blob-3 { width: 180px; height: 180px; background: var(--green-mid); top: 50%; left: 5%; animation-delay: -5s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.04); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-pale);
+    color: var(--green);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    letter-spacing: 0.3px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--green-mid);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.06;
+    color: var(--dark);
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green);
+    font-weight: 400;
+  }
+
+  .hero p {
+    font-size: 1.18rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-large {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(45,106,79,0.25);
+  }
+  .btn-large:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,106,79,0.30); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid rgba(45,106,79,0.25);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--green); background: var(--green-pale); }
+
+  .hero-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+  .hero-note::before { content: '✓  '; color: var(--green-mid); }
+
+  /* DASHBOARD PREVIEW */
+  .hero-visual {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52%;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .dashboard-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 24px 80px rgba(26,46,34,0.14), 0 2px 8px rgba(26,46,34,0.06);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--green-light), var(--accent));
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .card-badge {
+    background: var(--green-pale);
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.4px;
+  }
+
+  .pay-total {
+    font-family: 'Fraunces', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+  .pay-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .employees-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .employee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--cream);
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+  .employee-item:hover { background: var(--green-pale); }
+
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .emp-info { flex: 1; }
+  .emp-name { font-size: 0.88rem; font-weight: 600; color: var(--dark); }
+  .emp-role { font-size: 0.75rem; color: var(--muted); }
+  .emp-pay { font-size: 0.92rem; font-weight: 700; color: var(--green); }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-light);
+  }
+
+  .card-footer {
+    display: flex;
+    gap: 12px;
+  }
+
+  .stat-pill {
+    flex: 1;
+    background: var(--warm);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .stat-pill .num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .stat-pill .lbl {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Mini floating cards */
+  .float-card {
+    position: absolute;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(26,46,34,0.12);
+    padding: 14px 18px;
+    animation: floatCard 6s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .float-card-1 {
+    bottom: -20px;
+    left: -40px;
+    min-width: 180px;
+    animation-delay: -2s;
+  }
+  .float-card-2 {
+    top: 40px;
+    left: -50px;
+    min-width: 160px;
+    animation-delay: -4s;
+  }
+
+  .fc-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; }
+  .fc-value { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); }
+  .fc-change { font-size: 0.72rem; color: #27AE60; font-weight: 600; }
+
+  /* SOCIAL PROOF */
+  .social-proof {
+    padding: 32px 60px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-top: 1px solid rgba(45,106,79,0.08);
+    border-bottom: 1px solid rgba(45,106,79,0.08);
+    background: var(--white);
+    overflow: hidden;
+  }
+
+  .proof-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .logo-ticker {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    animation: ticker 20s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .company-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(44, 62, 53, 0.3);
+    white-space: nowrap;
+    letter-spacing: -0.3px;
+    transition: color 0.3s;
+  }
+  .company-logo:hover { color: var(--green); }
+
+  /* FEATURES */
+  .section {
+    padding: 100px 60px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(45,106,79,0.08);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--green-light));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(45,106,79,0.15); }
+  .feature-card:hover::after { transform: scaleX(1); }
+
+  .feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .feature-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    background: var(--dark);
+    padding: 100px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(116,198,157,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .how-section .section-title,
+  .how-section .section-tag { color: var(--green-light); }
+  .how-section .section-sub { color: rgba(255,255,255,0.5); }
+
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(116,198,157,0.3), transparent);
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    background: rgba(116,198,157,0.15);
+    border: 1.5px solid rgba(116,198,157,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-light);
+    margin: 0 auto 24px;
+  }
+
+  .step h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+  }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px;
+    border: 1.5px solid rgba(45,106,79,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+  .pricing-card.featured {
+    background: var(--green);
+    border-color: var(--green);
+    transform: scale(1.04);
+  }
+  .pricing-card.featured:hover { transform: scale(1.04) translateY(-4px); box-shadow: 0 16px 60px rgba(45,106,79,0.35); }
+
+  .pricing-tier {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .pricing-card.featured .pricing-tier { color: rgba(255,255,255,0.65); }
+
+  .pricing-price {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: -2px;
+  }
+  .pricing-card.featured .pricing-price { color: var(--white); }
+
+  .pricing-price sup {
+    font-size: 1.3rem;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+
+  .pricing-cadence {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .pricing-card.featured .pricing-cadence { color: rgba(255,255,255,0.55); }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .pricing-features li {
+    font-size: 0.88rem;
+    color: var(--text);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--green-mid);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .pricing-card.featured .pricing-features li::before { color: var(--green-pale); }
+
+  .btn-pricing {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    transition: all 0.2s;
+  }
+  .btn-pricing:hover { background: var(--green); color: var(--white); }
+  .pricing-card.featured .btn-pricing {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--green);
+  }
+  .pricing-card.featured .btn-pricing:hover { background: var(--green-pale); }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: var(--warm);
+    padding: 100px 60px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(45,106,79,0.08);
+    transition: transform 0.25s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); }
+
+  .stars {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .author-name { font-size: 0.88rem; font-weight: 600; color: var(--dark); }
+  .author-role { font-size: 0.78rem; color: var(--muted); }
+
+  /* CTA BANNER */
+  .cta-section {
+    padding: 100px 60px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 20%;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  .cta-content { flex: 1; position: relative; z-index: 1; }
+
+  .cta-content h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-input {
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    width: 240px;
+    outline: none;
+    transition: background 0.2s;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.55); }
+  .cta-input:focus { background: rgba(255,255,255,0.22); }
+
+  .btn-cta {
+    background: var(--white);
+    color: var(--green);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-cta:hover { background: var(--green-pale); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 72px 60px 40px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand .logo { display: block; margin-bottom: 16px; }
+
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+    max-width: 220px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .footer-col a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--green-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+
+  /* RESPONSIVE TWEAKS */
+  @media (max-width: 1024px) {
+    nav { padding: 16px 32px; }
+    .nav-links { display: none; }
+    .hero { padding: 120px 32px 60px; }
+    .hero-visual { display: none; }
+    .hero-content { max-width: 100%; }
+    .section { padding: 72px 32px; }
+    .social-proof { padding: 24px 32px; }
+    .features-grid, .pricing-grid, .testimonials-grid, .steps-row { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: none; }
+    .cta-section { flex-direction: column; padding: 72px 32px; gap: 40px; }
+    .cta-form { flex-direction: column; width: 100%; }
+    .cta-input { width: 100%; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .how-section, .testimonials-section { padding: 72px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">gustocustomersupport.us<span></span></div>
+  <ul class="nav-links">
+    <li><a href="#">Product</a></li>
+    <li><a href="#">Payroll</a></li>
+    <li><a href="#">Benefits</a></li>
+    <li><a href="#">HR</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Resources</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-ghost">Sign In</button>
+    <button class="btn-primary">Get Started Free</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Trusted by 40,000+ businesses</div>
+    <h1>Payroll & HR<br>that <em>actually</em><br>feels good.</h1>
+    <p>Run payroll in minutes, manage benefits with ease, and keep your team happy — all from one beautifully simple platform.</p>
+    <div class="hero-cta">
+      <button class="btn-large">Start for Free →</button>
+      <button class="btn-outline">Watch Demo</button>
+    </div>
+    <p class="hero-note">No credit card required. Free for 1 month.</p>
+  </div>
+
+  <!-- Dashboard Preview -->
+  <div class="hero-visual">
+    <div style="position: relative;">
+      <!-- Floating card top-left -->
+      <div class="float-card float-card-2">
+        <div class="fc-label">Avg. Time Saved</div>
+        <div class="fc-value">4.2 hrs</div>
+        <div class="fc-change">↑ per payroll run</div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header">
+          <div class="card-title">May Payroll</div>
+          <div class="card-badge">✓ Scheduled</div>
+        </div>
+
+        <div class="pay-total">$84,320</div>
+        <div class="pay-label">Total payout · 12 employees · May 15</div>
+
+        <div class="employees-row">
+          <div class="employee-item">
+            <div class="avatar" style="background: #2D6A4F;">AL</div>
+            <div class="emp-info">
+              <div class="emp-name">Alex Liu</div>
+              <div class="emp-role">Engineering Lead</div>
+            </div>
+            <div class="emp-pay">$9,200</div>
+            <div class="status-dot"></div>
+          </div>
+          <div class="employee-item">
+            <div class="avatar" style="background: #E76F51;">SR</div>
+            <div class="emp-info">
+              <div class="emp-name">Sofia Reyes</div>
+              <div class="emp-role">Product Designer</div>
+            </div>
+            <div class="emp-pay">$7,800</div>
+            <div class="status-dot"></div>
+          </div>
+          <div class="employee-item">
+            <div class="avatar" style="background: #4A90D9;">MK</div>
+            <div class="emp-info">
+              <div class="emp-name">Marcus Kim</div>
+              <div class="emp-role">Marketing</div>
+            </div>
+            <div class="emp-pay">$6,400</div>
+            <div class="status-dot"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="stat-pill">
+            <div class="num">12</div>
+            <div class="lbl">Employees</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">100%</div>
+            <div class="lbl">Compliant</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">3</div>
+            <div class="lbl">Days Until Pay</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating card bottom-left -->
+      <div class="float-card float-card-1">
+        <div class="fc-label">Tax filings</div>
+        <div class="fc-value" style="color: var(--green);">Auto-filed ✓</div>
+        <div class="fc-change">All 50 states covered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="social-proof">
+  <div class="proof-label">Loved by teams at</div>
+  <div style="overflow: hidden; flex: 1; display: flex;">
+    <div class="logo-ticker">
+      <span class="company-logo">Notion</span>
+      <span class="company-logo">Linear</span>
+      <span class="company-logo">Vercel</span>
+      <span class="company-logo">Figma</span>
+      <span class="company-logo">Loom</span>
+      <span class="company-logo">Rippling</span>
+      <span class="company-logo">Stripe</span>
+      <span class="company-logo">Mercury</span>
+      <!-- Repeat for infinite scroll -->
+      <span class="company-logo">Notion</span>
+      <span class="company-logo">Linear</span>
+      <span class="company-logo">Vercel</span>
+      <span class="company-logo">Figma</span>
+      <span class="company-logo">Loom</span>
+      <span class="company-logo">Rippling</span>
+      <span class="company-logo">Stripe</span>
+      <span class="company-logo">Mercury</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">Everything you need</div>
+  <h2 class="section-title">HR & payroll,<br>beautifully unified.</h2>
+  <p class="section-sub">Stop juggling five tools. gustocustomersupport.us handles everything from hire to retire, all in one place.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #D8F3DC;">💸</div>
+      <h3>Full-Service Payroll</h3>
+      <p>Run payroll in 3 clicks. We calculate taxes, file forms, and deposit funds — automatically, every time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FFF3E0;">🏥</div>
+      <h3>Benefits Administration</h3>
+      <p>Health, dental, vision, 401(k) — offer competitive benefits and let employees self-enroll in minutes.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #E8F4FD;">📋</div>
+      <h3>HR & Compliance</h3>
+      <p>Onboarding, offer letters, PTO tracking, and compliance checks — done for you before you even ask.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FDE8E8;">⏱️</div>
+      <h3>Time & Attendance</h3>
+      <p>Clock in/out, approve timesheets, and sync hours to payroll with zero manual entry.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #EDE7F6;">📊</div>
+      <h3>Reporting & Insights</h3>
+      <p>Know your numbers. Headcount, turnover, payroll costs — surfaced automatically, every month.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #E8F5E9;">🔗</div>
+      <h3>Integrations</h3>
+      <p>Connect QuickBooks, Xero, Slack, and 100+ tools. gustocustomersupport.us plays well with everything you already use.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-tag">Simple by design</div>
+  <h2 class="section-title" style="color: var(--white);">Up and running<br>in an afternoon.</h2>
+  <p class="section-sub">No implementation fees. No 6-week onboarding. Just sign up and go.</p>
+
+  <div class="steps-row">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Set Up Your Company</h3>
+      <p>Enter your business details, connect your bank account, and add your employees — guided step by step.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Invite Your Team</h3>
+      <p>Employees get a link, fill in their own info, and choose their benefits. You just approve.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Run Payroll</h3>
+      <p>Review, approve, done. gustocustomersupport.us handles taxes, direct deposits, and filings automatically every period.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="section-tag">Transparent pricing</div>
+  <h2 class="section-title">Simple plans,<br>no surprises.</h2>
+  <p class="section-sub">Scale up or down anytime. No contracts, no hidden fees.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Seedling</div>
+      <div class="pricing-price"><sup>$</sup>49</div>
+      <div class="pricing-cadence">per month + $6/employee</div>
+      <ul class="pricing-features">
+        <li>Full-service payroll</li>
+        <li>W-2s and 1099s</li>
+        <li>Employee self-service</li>
+        <li>Basic HR tools</li>
+        <li>Email support</li>
+      </ul>
+      <button class="btn-pricing">Get Started Free</button>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="pricing-tier">Growth</div>
+      <div class="pricing-price"><sup>$</sup>99</div>
+      <div class="pricing-cadence">per month + $12/employee</div>
+      <ul class="pricing-features">
+        <li>Everything in Seedling</li>
+        <li>Benefits administration</li>
+        <li>Time & attendance</li>
+        <li>Compliance alerts</li>
+        <li>Priority support</li>
+        <li>Advanced reporting</li>
+      </ul>
+      <button class="btn-pricing">Start Free Trial</button>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tier">Enterprise</div>
+      <div class="pricing-price">Custom</div>
+      <div class="pricing-cadence">tailored for your team</div>
+      <ul class="pricing-features">
+        <li>Everything in Growth</li>
+        <li>Dedicated CSM</li>
+        <li>Custom integrations</li>
+        <li>HRIS & ATS sync</li>
+        <li>SLA guarantee</li>
+      </ul>
+      <button class="btn-pricing">Contact Sales</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-tag">Love letters</div>
+  <h2 class="section-title">Teams that switched<br>never looked back.</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"gustocustomersupport.us cut our payroll time from 4 hours to literally 8 minutes. Our ops team couldn't believe it."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #2D6A4F;">JK</div>
+        <div>
+          <div class="author-name">Jamie Kwan</div>
+          <div class="author-role">COO, Beacon Labs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Finally, software that doesn't feel like it was built in 2004. gustocustomersupport.us is beautiful and it just works."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #E76F51;">TM</div>
+        <div>
+          <div class="author-name">Tara Mitchell</div>
+          <div class="author-role">Founder, Driftwood Studio</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"We onboarded 11 employees during Series A. gustocustomersupport.us made it feel like we had an HR team of 10."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #4A90D9;">RO</div>
+        <div>
+          <div class="author-name">Rafael Ortega</div>
+          <div class="author-role">CEO, Fieldnote</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Your first month<br>is on us.</h2>
+    <p>Join 40,000+ businesses running payroll the modern way. No setup fees, no contracts, cancel anytime.</p>
+  </div>
+  <div class="cta-form">
+    <input class="cta-input" type="email" placeholder="Work email address">
+    <button class="btn-cta">Get Started Free →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">gustocustomersupport.us<span></span></span>
+      <p>Modern payroll and HR software built for businesses that care about their people.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#">Payroll</a></li>
+        <li><a href="#">Benefits</a></li>
+        <li><a href="#">HR Tools</a></li>
+        <li><a href="#">Time Tracking</a></li>
+        <li><a href="#">Integrations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Guides</a></li>
+        <li><a href="#">Webinars</a></li>
+        <li><a href="#">API Docs</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 gustocustomersupport.us, Inc. All rights reserved.</span>
+    <span>Made with care for small businesses 🌱</span>
+  </div>
+</footer>
+
+<!-- POPUP MODAL -->
+<div id="popup-overlay" style="
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(26,46,34,0.55);
+  backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+">
+  <div id="popup-card" style="
+    background: var(--white);
+    border-radius: 24px;
+    width: min(520px, 92vw);
+    overflow: hidden;
+    box-shadow: 0 32px 100px rgba(26,46,34,0.25);
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.38s cubic-bezier(.22,1,.36,1), opacity 0.35s ease;
+    opacity: 0;
+    position: relative;
+  ">
+    <!-- Top green band -->
+    <div style="
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+      padding: 36px 40px 32px;
+      position: relative;
+      overflow: hidden;
+    ">
+      <!-- Decorative circles -->
+      <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,0.07);border-radius:50%;"></div>
+      <div style="position:absolute;bottom:-60px;left:30%;width:120px;height:120px;background:rgba(255,255,255,0.05);border-radius:50%;"></div>
+
+      <div style="
+        display:inline-flex;align-items:center;gap:8px;
+        background:rgba(255,255,255,0.15);
+        border-radius:100px; padding:5px 12px;
+        font-size:0.72rem;font-weight:700;letter-spacing:0.8px;
+        color:rgba(255,255,255,0.9);text-transform:uppercase;
+        margin-bottom:16px;
+      ">🎁 Limited Offer</div>
+
+      <h2 style="
+        font-family:'Fraunces',serif;
+        font-size:2rem;font-weight:700;
+        color:var(--white);line-height:1.1;
+        letter-spacing:-0.8px;margin-bottom:10px;
+      ">Get 2 months free<br><em style='font-weight:400;font-style:italic;'>when you sign up today.</em></h2>
+
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.6;">
+        Join thousands of businesses who run payroll in minutes — not hours. Offer ends Friday.
+      </p>
+    </div>
+
+    <!-- Body -->
+    <div style="padding:32px 40px 36px;">
+      <!-- Trust badges -->
+      <div style="display:flex;gap:20px;margin-bottom:28px;">
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--muted);">
+          <span style="color:var(--green);font-size:1rem;">✓</span> No credit card
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--muted);">
+          <span style="color:var(--green);font-size:1rem;">✓</span> Cancel anytime
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--muted);">
+          <span style="color:var(--green);font-size:1rem;">✓</span> Setup in 15 min
+        </div>
+      </div>
+
+      <!-- Input fields -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+        <div style="display:flex;gap:12px;">
+          <input id="popup-fname" type="text" placeholder="First name" style="
+            flex:1;padding:13px 16px;border:1.5px solid rgba(45,106,79,0.15);
+            border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+            color:var(--text);background:var(--cream);outline:none;
+            transition:border-color 0.2s,background 0.2s;
+          " onfocus="this.style.borderColor='var(--green)';this.style.background='var(--white)'"
+             onblur="this.style.borderColor='rgba(45,106,79,0.15)';this.style.background='var(--cream)'">
+          <input id="popup-lname" type="text" placeholder="Last name" style="
+            flex:1;padding:13px 16px;border:1.5px solid rgba(45,106,79,0.15);
+            border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+            color:var(--text);background:var(--cream);outline:none;
+            transition:border-color 0.2s,background 0.2s;
+          " onfocus="this.style.borderColor='var(--green)';this.style.background='var(--white)'"
+             onblur="this.style.borderColor='rgba(45,106,79,0.15)';this.style.background='var(--cream)'">
+        </div>
+        <input id="popup-email" type="email" placeholder="Work email address" style="
+          width:100%;padding:13px 16px;border:1.5px solid rgba(45,106,79,0.15);
+          border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+          color:var(--text);background:var(--cream);outline:none;
+          transition:border-color 0.2s,background 0.2s;
+        " onfocus="this.style.borderColor='var(--green)';this.style.background='var(--white)'"
+           onblur="this.style.borderColor='rgba(45,106,79,0.15)';this.style.background='var(--cream)'">
+        <select id="popup-size" style="
+          width:100%;padding:13px 16px;border:1.5px solid rgba(45,106,79,0.15);
+          border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+          color:var(--muted);background:var(--cream);outline:none;
+          transition:border-color 0.2s;appearance:none;cursor:pointer;
+        " onfocus="this.style.borderColor='var(--green)'"
+           onblur="this.style.borderColor='rgba(45,106,79,0.15)'">
+          <option value="" disabled selected>Company size</option>
+          <option>1–5 employees</option>
+          <option>6–25 employees</option>
+          <option>26–100 employees</option>
+          <option>100+ employees</option>
+        </select>
+      </div>
+
+      <!-- CTA button -->
+      <button id="popup-submit" onclick="handlePopupSubmit()" style="
+        width:100%;padding:15px;
+        background:var(--green);color:var(--white);
+        border:none;border-radius:12px;
+        font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;
+        cursor:pointer;
+        box-shadow:0 4px 20px rgba(45,106,79,0.28);
+        transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+        margin-bottom:14px;
+      " onmouseover="this.style.background='var(--green-mid)';this.style.transform='translateY(-1px)'"
+         onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'">
+        Claim My Free Months →
+      </button>
+
+      <p style="text-align:center;font-size:0.75rem;color:var(--muted);">
+        By signing up you agree to our <a href="#" style="color:var(--green);text-decoration:none;">Terms</a> &amp; <a href="#" style="color:var(--green);text-decoration:none;">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <!-- Close button -->
+    <button onclick="closePopup()" style="
+      position:absolute;top:16px;right:16px;
+      width:32px;height:32px;border-radius:50%;
+      background:rgba(255,255,255,0.18);border:none;
+      color:var(--white);font-size:1.1rem;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      transition:background 0.2s;
+    " onmouseover="this.style.background='rgba(255,255,255,0.28)'"
+       onmouseout="this.style.background='rgba(255,255,255,0.18)'">✕</button>
+  </div>
+</div>
+
+<!-- SUCCESS STATE -->
+<div id="popup-success" style="
+  position:fixed;inset:0;z-index:1001;
+  background:rgba(26,46,34,0.55);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.35s ease;
+">
+  <div style="
+    background:var(--white);border-radius:24px;
+    width:min(420px,90vw);padding:56px 40px;
+    text-align:center;
+    box-shadow:0 32px 100px rgba(26,46,34,0.25);
+    transform:scale(0.95);
+    transition:transform 0.38s cubic-bezier(.22,1,.36,1);
+  " id="success-card">
+    <div style="
+      width:72px;height:72px;background:var(--green-pale);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:2rem;margin:0 auto 24px;
+    ">🌱</div>
+    <h3 style="font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.5px;">You're in!</h3>
+    <p style="font-size:0.92rem;color:var(--muted);line-height:1.65;margin-bottom:28px;">Check your inbox — we sent a link to get you started. Your first 2 months are on us. 🎉</p>
+    <button onclick="closeSuccess()" style="
+      background:var(--green);color:var(--white);border:none;
+      font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;
+      padding:13px 32px;border-radius:10px;cursor:pointer;
+      transition:background 0.2s;
+    " onmouseover="this.style.background='var(--green-mid)'"
+       onmouseout="this.style.background='var(--green)'">Back to gustocustomersupport.us</button>
+  </div>
+</div>
+
+<script>
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 10
+      ? '0 4px 24px rgba(26,46,34,0.08)'
+      : 'none';
+  });
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card, .pricing-card, .testimonial-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  function openPopup() {
+    const overlay = document.getElementById('popup-overlay');
+    const card = document.getElementById('popup-card');
+    overlay.style.display = 'flex';
+    overlay.style.pointerEvents = 'all';
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(24px) scale(0.97)';
+    overlay.style.opacity = '0';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      overlay.style.opacity = '1';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0) scale(1)';
+    }));
+  }
+
+  function closePopup() {
+    const overlay = document.getElementById('popup-overlay');
+    const card = document.getElementById('popup-card');
+    overlay.style.opacity = '0';
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px) scale(0.97)';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      overlay.style.pointerEvents = 'none';
+    }, 350);
+    document.body.style.overflow = '';
+  }
+
+  function closeSuccess() {
+    const s = document.getElementById('popup-success');
+    s.style.opacity = '0';
+    setTimeout(() => { s.style.display = 'none'; s.style.pointerEvents = 'none'; }, 350);
+    document.body.style.overflow = '';
+  }
+
+  function handlePopupSubmit() {
+    const email = document.getElementById('popup-email').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('popup-email').style.borderColor = '#E76F51';
+      document.getElementById('popup-email').focus();
+      return;
+    }
+    closePopup();
+    setTimeout(() => {
+      const s = document.getElementById('popup-success');
+      const sc = document.getElementById('success-card');
+      s.style.display = 'flex';
+      s.style.pointerEvents = 'all';
+      s.style.opacity = '0';
+      sc.style.transform = 'scale(0.95)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        s.style.opacity = '1';
+        sc.style.transform = 'scale(1)';
+      }));
+    }, 400);
+  }
+
+  document.getElementById('popup-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('popup-overlay')) closePopup();
+  });
+  document.getElementById('popup-success').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('popup-success')) closeSuccess();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closePopup(); closeSuccess(); closeCallPopup(); closeCallSuccess(); }
+  });
+
+  // Open after 1.5s
+  setTimeout(openPopup, 1500);
+
+  // Open on CTA clicks
+  document.querySelectorAll('.btn-large, .btn-cta, .btn-pricing').forEach(btn => {
+    btn.addEventListener('click', openPopup);
+  });
+</script>
+
+<!-- ===================== CALL POPUP ===================== -->
+
+<!-- Floating phone button -->
+<div id="call-fab" style="
+  position:fixed; bottom:32px; right:32px; z-index:950;
+  width:62px; height:62px; border-radius:50%;
+  background:linear-gradient(135deg,#2D6A4F,#40916C);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  box-shadow:0 6px 28px rgba(45,106,79,0.5);
+  transition:transform 0.2s, box-shadow 0.2s;
+">
+  <!-- ripple rings -->
+  <div style="position:absolute;width:62px;height:62px;border-radius:50%;border:2px solid rgba(45,106,79,0.45);animation:callRipple 2s ease-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;width:62px;height:62px;border-radius:50%;border:2px solid rgba(45,106,79,0.25);animation:callRipple 2s ease-out 0.65s infinite;pointer-events:none;"></div>
+  <!-- phone icon -->
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.04-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </svg>
+  <!-- tooltip -->
+  <div id="call-fab-tip" style="
+    position:absolute; right:72px;
+    background:#1A2E22; color:#fff;
+    font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:600;
+    padding:6px 13px; border-radius:8px; white-space:nowrap;
+    opacity:0; pointer-events:none; transition:opacity 0.18s;
+    box-shadow:0 4px 14px rgba(0,0,0,0.18);
+  ">Talk to Sales</div>
+</div>
+
+<!-- Call popup overlay -->
+<div id="call-overlay" style="
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(26,46,34,0.58); backdrop-filter:blur(7px);
+  display:none; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.32s ease;
+">
+  <div id="call-card" style="
+    background:#fff; border-radius:24px;
+    width:min(468px,93vw); overflow:hidden;
+    box-shadow:0 32px 100px rgba(26,46,34,0.28);
+    transform:translateY(28px) scale(0.96);
+    transition:transform 0.4s cubic-bezier(.22,1,.36,1), opacity 0.32s ease;
+    opacity:0; position:relative;
+  ">
+
+    <!-- Dark header -->
+    <div style="background:linear-gradient(135deg,#1A2E22,#2D6A4F);padding:30px 36px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-50px;left:15%;width:110px;height:110px;background:rgba(116,198,157,0.1);border-radius:50%;pointer-events:none;"></div>
+      <!-- icon -->
+      <div style="width:50px;height:50px;background:rgba(255,255,255,0.13);border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.04-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h2 style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;color:#fff;line-height:1.1;letter-spacing:-0.5px;margin-bottom:8px;">Talk to a real human.</h2>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.52);line-height:1.65;">No bots. No hold music. Payroll specialists available Mon–Fri, 9am–6pm ET.</p>
+      <!-- close -->
+      <button onclick="closeCallPopup()" style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.13);border:none;color:#fff;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.24)'" onmouseout="this.style.background='rgba(255,255,255,0.13)'">✕</button>
+    </div>
+
+    <!-- Tabs -->
+    <div id="call-tabs" style="display:flex;border-bottom:1px solid rgba(45,106,79,0.1);">
+      <button id="ctab-now" onclick="switchCallTab('now')" style="flex:1;padding:13px 8px;border:none;border-bottom:2.5px solid var(--green);background:var(--green-pale);font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:700;color:var(--green);cursor:pointer;">📞 Call Now</button>
+      <button id="ctab-sched" onclick="switchCallTab('sched')" style="flex:1;padding:13px 8px;border:none;border-bottom:2.5px solid transparent;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;color:var(--muted);cursor:pointer;">📅 Schedule a Call</button>
+    </div>
+
+    <!-- Panel: Call Now -->
+    <div id="cpanel-now" style="padding:26px 36px 32px;">
+      <!-- live badge -->
+      <div style="display:flex;align-items:center;gap:9px;background:var(--green-pale);border-radius:10px;padding:9px 14px;margin-bottom:18px;">
+        <div style="width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 3px rgba(34,197,94,0.22);animation:livePulse 1.6s ease-in-out infinite;flex-shrink:0;"></div>
+        <span style="font-size:0.82rem;font-weight:600;color:var(--green);">3 specialists online right now</span>
+        <span style="font-size:0.76rem;color:var(--muted);margin-left:auto;white-space:nowrap;">~2 min wait</span>
+      </div>
+      <p style="font-size:0.87rem;color:var(--muted);line-height:1.65;margin-bottom:16px;">Enter your number and we'll ring you — no hold music, no robots.</p>
+      <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <select style="padding:12px 10px;border:1.5px solid rgba(45,106,79,0.15);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.87rem;background:var(--cream);color:var(--text);outline:none;cursor:pointer;flex-shrink:0;" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='rgba(45,106,79,0.15)'">
+          <option>🇺🇸 +1</option><option>🇬🇧 +44</option><option>🇦🇺 +61</option><option>🇨🇦 +1</option>
+        </select>
+        <input id="cp-phone" type="tel" placeholder="(555) 000-0000" oninput="fmtPhone(this)" style="flex:1;padding:12px 15px;border:1.5px solid rgba(45,106,79,0.15);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:var(--cream);outline:none;transition:border-color 0.2s,background 0.2s;" onfocus="this.style.borderColor='var(--green)';this.style.background='#fff'" onblur="this.style.borderColor='rgba(45,106,79,0.15)';this.style.background='var(--cream)'">
+      </div>
+      <button onclick="doCallNow()" style="width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(45,106,79,0.3);transition:background 0.2s,transform 0.15s;display:flex;align-items:center;justify-content:center;gap:9px;" onmouseover="this.style.background='var(--green-mid)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.04-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Me Now
+      </button>
+      <p style="text-align:center;font-size:0.74rem;color:var(--muted);margin-top:11px;">Free · No pressure · Just genuine help</p>
+    </div>
+
+    <!-- Panel: Schedule -->
+    <div id="cpanel-sched" style="padding:26px 36px 32px;display:none;">
+      <p style="font-size:0.87rem;color:var(--muted);line-height:1.65;margin-bottom:16px;">Pick a slot and we'll send a calendar invite with a dial-in link.</p>
+      <div style="font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:var(--muted);margin-bottom:8px;">Today — May 5</div>
+      <div id="cslots-a" style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px;"></div>
+      <div style="font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:var(--muted);margin-bottom:8px;">Tomorrow — May 6</div>
+      <div id="cslots-b" style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:18px;"></div>
+      <input id="cp-email" type="email" placeholder="Email for calendar invite" style="width:100%;padding:12px 15px;border:1.5px solid rgba(45,106,79,0.15);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:var(--cream);outline:none;transition:border-color 0.2s,background 0.2s;margin-bottom:13px;" onfocus="this.style.borderColor='var(--green)';this.style.background='#fff'" onblur="this.style.borderColor='rgba(45,106,79,0.15)';this.style.background='var(--cream)'">
+      <button onclick="doSchedule()" style="width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(45,106,79,0.3);transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='var(--green-mid)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'">Confirm Booking →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Call success overlay -->
+<div id="call-success" style="position:fixed;inset:0;z-index:1001;background:rgba(26,46,34,0.58);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.32s ease;">
+  <div id="call-success-card" style="background:#fff;border-radius:24px;width:min(400px,90vw);padding:52px 36px;text-align:center;box-shadow:0 32px 100px rgba(26,46,34,0.28);transform:scale(0.95);transition:transform 0.4s cubic-bezier(.22,1,.36,1);">
+    <div id="cs-icon" style="width:72px;height:72px;background:var(--green-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;margin:0 auto 20px;"></div>
+    <h3 id="cs-title" style="font-family:'Fraunces',serif;font-size:1.65rem;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.5px;"></h3>
+    <p id="cs-msg" style="font-size:0.9rem;color:var(--muted);line-height:1.68;margin-bottom:28px;"></p>
+    <button onclick="closeCallSuccess()" style="background:var(--green);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;padding:12px 32px;border-radius:10px;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--green-mid)'" onmouseout="this.style.background='var(--green)'">Done</button>
+  </div>
+</div>
+
+<style>
+  @keyframes callRipple { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(2.3);opacity:0} }
+  @keyframes livePulse { 0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.22)} 50%{box-shadow:0 0 0 7px rgba(34,197,94,0.07)} }
+</style>
+
+<script>
+  /* ---- floating button hover ---- */
+  const fab = document.getElementById('call-fab');
+  const fabTip = document.getElementById('call-fab-tip');
+  fab.addEventListener('mouseover', () => { fab.style.transform='scale(1.1)'; fab.style.boxShadow='0 10px 36px rgba(45,106,79,0.6)'; fabTip.style.opacity='1'; });
+  fab.addEventListener('mouseout',  () => { fab.style.transform='scale(1)';   fab.style.boxShadow='0 6px 28px rgba(45,106,79,0.5)';  fabTip.style.opacity='0'; });
+  fab.addEventListener('click', openCallPopup);
+
+  /* ---- open / close ---- */
+  function openCallPopup() {
+    const ov = document.getElementById('call-overlay');
+    const cd = document.getElementById('call-card');
+    ov.style.display = 'flex'; ov.style.pointerEvents = 'all';
+    ov.style.opacity = '0'; cd.style.opacity = '0'; cd.style.transform = 'translateY(28px) scale(0.96)';
+    document.body.style.overflow = 'hidden';
+    buildCallSlots();
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      ov.style.opacity = '1'; cd.style.opacity = '1'; cd.style.transform = 'translateY(0) scale(1)';
+    }));
+  }
+  function closeCallPopup() {
+    const ov = document.getElementById('call-overlay');
+    const cd = document.getElementById('call-card');
+    ov.style.opacity = '0'; cd.style.opacity = '0'; cd.style.transform = 'translateY(16px) scale(0.96)';
+    setTimeout(() => { ov.style.display = 'none'; ov.style.pointerEvents = 'none'; }, 340);
+    document.body.style.overflow = '';
+  }
+  function closeCallSuccess() {
+    const s = document.getElementById('call-success');
+    s.style.opacity = '0';
+    setTimeout(() => { s.style.display = 'none'; s.style.pointerEvents = 'none'; }, 340);
+    document.body.style.overflow = '';
+  }
+
+  /* ---- show confirmation ---- */
+  function showCallSuccess(icon, title, msg) {
+    closeCallPopup();
+    setTimeout(() => {
+      const s = document.getElementById('call-success');
+      const sc = document.getElementById('call-success-card');
+      document.getElementById('cs-icon').textContent = icon;
+      document.getElementById('cs-title').textContent = title;
+      document.getElementById('cs-msg').textContent = msg;
+      s.style.display = 'flex'; s.style.pointerEvents = 'all'; s.style.opacity = '0';
+      sc.style.transform = 'scale(0.95)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        s.style.opacity = '1'; sc.style.transform = 'scale(1)';
+      }));
+    }, 380);
+  }
+
+  /* ---- tab switch ---- */
+  function switchCallTab(tab) {
+    const isNow = tab === 'now';
+    document.getElementById('cpanel-now').style.display   = isNow ? 'block' : 'none';
+    document.getElementById('cpanel-sched').style.display = isNow ? 'none'  : 'block';
+    const tN = document.getElementById('ctab-now');
+    const tS = document.getElementById('ctab-sched');
+    tN.style.background   = isNow  ? 'var(--green-pale)' : '#fff';
+    tN.style.color        = isNow  ? 'var(--green)'      : 'var(--muted)';
+    tN.style.fontWeight   = isNow  ? '700' : '500';
+    tN.style.borderBottom = isNow  ? '2.5px solid var(--green)' : '2.5px solid transparent';
+    tS.style.background   = !isNow ? 'var(--green-pale)' : '#fff';
+    tS.style.color        = !isNow ? 'var(--green)'      : 'var(--muted)';
+    tS.style.fontWeight   = !isNow ? '700' : '500';
+    tS.style.borderBottom = !isNow ? '2.5px solid var(--green)' : '2.5px solid transparent';
+  }
+
+  /* ---- phone formatter ---- */
+  function fmtPhone(el) {
+    let v = el.value.replace(/\D/g,'').slice(0,10);
+    if (v.length >= 7)      v = '('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6);
+    else if (v.length >= 4) v = '('+v.slice(0,3)+') '+v.slice(3);
+    else if (v.length > 0)  v = '('+v;
+    el.value = v;
+  }
+
+  /* ---- call now submit ---- */
+  function doCallNow() {
+    const el = document.getElementById('cp-phone');
+    if (el.value.replace(/\D/g,'').length < 10) { el.style.borderColor='#E76F51'; el.focus(); return; }
+    showCallSuccess('📞', "We're calling you now!", "A gustocustomersupport.us specialist will ring you within 60 seconds. Average call: 8 minutes.");
+  }
+
+  /* ---- slot builder ---- */
+  let pickedSlot = null;
+  function buildCallSlots() {
+    pickedSlot = null;
+    const slotsA = ['10:00 AM','10:30 AM','11:00 AM','2:00 PM','3:30 PM','4:30 PM'];
+    const slotsB = ['9:00 AM','9:30 AM','11:00 AM','1:00 PM','2:30 PM','4:00 PM'];
+    function render(id, list) {
+      const wrap = document.getElementById(id); wrap.innerHTML = '';
+      list.forEach((s, i) => {
+        const b = document.createElement('button');
+        b.textContent = s;
+        const active = (id === 'cslots-a' && i === 0);
+        if (active) pickedSlot = s;
+        b.style.cssText = `padding:9px 4px;border:1.5px solid ${active?'var(--green)':'rgba(45,106,79,0.17)'};border-radius:9px;background:${active?'var(--green)':'var(--cream)'};color:${active?'#fff':'var(--text)'};font-family:'DM Sans',sans-serif;font-size:0.79rem;font-weight:600;cursor:pointer;transition:all 0.16s;`;
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#cslots-a button,#cslots-b button').forEach(x => {
+            x.style.background='var(--cream)'; x.style.borderColor='rgba(45,106,79,0.17)'; x.style.color='var(--text)';
+          });
+          b.style.background='var(--green)'; b.style.borderColor='var(--green)'; b.style.color='#fff';
+          pickedSlot = s;
+        });
+        b.addEventListener('mouseover', () => { if(pickedSlot!==s){ b.style.background='var(--green-pale)'; b.style.borderColor='var(--green-light)'; } });
+        b.addEventListener('mouseout',  () => { if(pickedSlot!==s){ b.style.background='var(--cream)'; b.style.borderColor='rgba(45,106,79,0.17)'; b.style.color='var(--text)'; } });
+        wrap.appendChild(b);
+      });
+    }
+    render('cslots-a', slotsA);
+    render('cslots-b', slotsB);
+  }
+
+  /* ---- schedule submit ---- */
+  function doSchedule() {
+    const el = document.getElementById('cp-email');
+    if (!el.value || !el.value.includes('@')) { el.style.borderColor='#E76F51'; el.focus(); return; }
+    showCallSuccess('📅', 'Call booked!', `Confirmed for ${pickedSlot||'your chosen time'}. Check ${el.value} for a calendar invite with dial-in details.`);
+  }
+
+  /* ---- overlay click to close ---- */
+  document.getElementById('call-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('call-overlay')) closeCallPopup();
+  });
+  document.getElementById('call-success').addEventListener('click', e => {
+    if (e.target === document.getElementById('call-success')) closeCallSuccess();
+  });
+</script>
+
+<!-- ======================================================
+     CALL-TO-PAY POPUP  (quickbillpay style)
+     ====================================================== -->
+<div id="ctp-overlay" style="
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(0,0,0,0.72);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.35s ease;
+">
+  <div id="ctp-box" style="
+    background:#fff;
+    border-radius:20px;
+    width:min(400px,92vw);
+    overflow:hidden;
+    box-shadow:0 28px 90px rgba(0,0,0,0.35);
+    transform:translateY(30px) scale(0.96);
+    transition:transform 0.4s cubic-bezier(.22,1,.36,1), opacity 0.35s ease;
+    opacity:0;
+    text-align:center;
+    position:relative;
+  ">
+
+    <!-- Red top bar -->
+    <div style="background:#CD040B; padding:22px 28px 18px;">
+      <!-- Sprout logo stand-in (replace src with real logo if needed) -->
+      <div style="
+        display:inline-flex; align-items:center; gap:8px;
+        font-family:'Fraunces',serif; font-size:1.8rem; font-weight:700;
+        color:#fff; letter-spacing:-0.5px;
+      ">gustocustomersupport.us</div>
+    </div>
+
+    <!-- Body -->
+    <div style="padding:28px 32px 32px;">
+      <!-- phone icon circle -->
+      <div style="
+        width:64px; height:64px; border-radius:50%;
+        background:#fff3f3; border:2px solid #ffd0d0;
+        display:flex; align-items:center; justify-content:center;
+        margin:0 auto 16px;
+        animation:ctpRing 1.2s ease-in-out infinite;
+      ">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#CD040B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.04-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+
+      <p style="
+        font-family:'DM Sans',sans-serif;
+        font-size:0.78rem; font-weight:700;
+        letter-spacing:1.4px; text-transform:uppercase;
+        color:#999; margin-bottom:8px;
+      ">Payroll Support</p>
+
+      <h2 style="
+        font-family:'Fraunces',serif;
+        font-size:1.5rem; font-weight:700;
+        color:#111; line-height:1.2;
+        margin-bottom:6px; letter-spacing:-0.3px;
+      ">Contact Gusto Customer Support</h2>
+
+      <p style="
+        font-family:'DM Sans',sans-serif;
+        font-size:0.85rem; color:#777;
+        margin-bottom:24px; line-height:1.55;
+      ">Speak with a gustocustomersupport.us payroll specialist instantly.<br>No wait. No bots. Real help.</p>
+
+      <!-- Big phone number button -->
+      <a href="tel:+18005550199" style="
+        display:block;
+        background:#CD040B;
+        color:#fff;
+        text-decoration:none;
+        border-radius:12px;
+        padding:16px 20px;
+        font-family:'DM Sans',sans-serif;
+        font-size:1.25rem;
+        font-weight:800;
+        letter-spacing:0.5px;
+        box-shadow:0 6px 24px rgba(205,4,11,0.32);
+        transition:background 0.2s, transform 0.15s, box-shadow 0.2s;
+        margin-bottom:12px;
+      " onmouseover="this.style.background='#a8030a';this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(205,4,11,0.4)'"
+         onmouseout="this.style.background='#CD040B';this.style.transform='translateY(0)';this.style.boxShadow='0 6px 24px rgba(205,4,11,0.32)'">
+        📞 &nbsp;+1 (800) 555-0199
+      </a>
+
+      <!-- Secondary smaller link -->
+      <a href="tel:+18005550199" style="
+        display:block;
+        background:#fff3f3;
+        color:#CD040B;
+        text-decoration:none;
+        border-radius:10px;
+        padding:12px 20px;
+        font-family:'DM Sans',sans-serif;
+        font-size:0.95rem;
+        font-weight:700;
+        border:1.5px solid #ffd0d0;
+        transition:background 0.2s;
+        margin-bottom:20px;
+      " onmouseover="this.style.background='#ffe8e8'" onmouseout="this.style.background='#fff3f3'">
+        Call Now: +1 (800) 555-0199
+      </a>
+
+      <!-- Dismiss -->
+      <button onclick="ctpClose()" style="
+        background:none; border:none;
+        font-family:'DM Sans',sans-serif;
+        font-size:0.8rem; color:#bbb;
+        cursor:pointer; padding:4px 8px;
+        transition:color 0.2s;
+      " onmouseover="this.style.color='#555'" onmouseout="this.style.color='#bbb'">
+        No thanks, dismiss
+      </button>
+    </div>
+
+    <!-- X close -->
+    <button onclick="ctpClose()" style="
+      position:absolute; top:12px; right:14px;
+      background:rgba(255,255,255,0.22); border:none;
+      color:#fff; font-size:1.1rem;
+      width:30px; height:30px; border-radius:50%;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    " onmouseover="this.style.background='rgba(255,255,255,0.38)'"
+       onmouseout="this.style.background='rgba(255,255,255,0.22)'">✕</button>
+  </div>
+</div>
+
+<style>
+  @keyframes ctpRing {
+    0%,100% { transform:rotate(0deg); }
+    10%      { transform:rotate(-15deg); }
+    20%      { transform:rotate(15deg); }
+    30%      { transform:rotate(-10deg); }
+    40%      { transform:rotate(10deg); }
+    50%      { transform:rotate(0deg); }
+  }
+</style>
+
+<script>
+  function ctpOpen() {
+    const ov = document.getElementById('ctp-overlay');
+    const bx = document.getElementById('ctp-box');
+    ov.style.display = 'flex'; ov.style.pointerEvents = 'all';
+    ov.style.opacity = '0'; bx.style.opacity = '0'; bx.style.transform = 'translateY(30px) scale(0.96)';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      ov.style.opacity = '1'; bx.style.opacity = '1'; bx.style.transform = 'translateY(0) scale(1)';
+    }));
+  }
+  function ctpClose() {
+    const ov = document.getElementById('ctp-overlay');
+    const bx = document.getElementById('ctp-box');
+    ov.style.opacity = '0'; bx.style.opacity = '0'; bx.style.transform = 'translateY(20px) scale(0.96)';
+    setTimeout(() => { ov.style.display = 'none'; ov.style.pointerEvents = 'none'; }, 350);
+    document.body.style.overflow = '';
+    // Re-open 5 seconds after closing
+    setTimeout(ctpOpen, 5000);
+  }
+  document.getElementById('ctp-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('ctp-overlay')) ctpClose();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') ctpClose(); });
+
+  // Auto-open after 1s
+  setTimeout(ctpOpen, 1000);
+</script>
+
+</body>
+</html>
